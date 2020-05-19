@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: acer
@@ -23,7 +24,9 @@
             <tr>
                 <td>${good.name}</td>
                 <td>${good.price}</td>
-                <td>${good.time}</td>
+                <td>
+                    <fmt:formatDate value="${good.time}" pattern="yyyy-MM-dd"/>
+                </td>
                 <td><a href="./deleteByIds?id=${good.id}">删除</a></td>
             </tr>
         </c:forEach>
