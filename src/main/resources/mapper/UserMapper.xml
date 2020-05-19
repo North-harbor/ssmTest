@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyj.mapper.UserMapper">
+    <select id="selectAll" resultType="com.hyj.pojo.User">
+        SELECT * from tb_stu;
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+       delete from tb_stu where id=#{id};
+    </delete>
+    <select id="findByName" parameterType="com.hyj.pojo.User" resultType="com.hyj.pojo.User">
+        select * from tb_stu where 1=1
+        <if test="#{stuName!=null and stuName!=''}">
+            and stuName like '%${stuName}%'
+        </if>
+    </select>
+    <insert id="insertUser" parameterType="com.hyj.pojo.User">
+        insert into tb_stu(stuName,stuAge) values (#{stuName},#{stuAge})
+    </insert>
+    <select id="selectById" parameterType="com.hyj.pojo.User" resultType="com.hyj.pojo.User">
+        select * from tb_stu where id=#{id};
+    </select>
+    <update id="updatById" parameterType="com.hyj.pojo.User">
+        update tb_stu set stuName=#{stuName},stuAge=#{stuAge} where id=#{id};
+    </update>
+</mapper>
+    
